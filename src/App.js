@@ -8,24 +8,40 @@ import Form from './components/Form'
 
 const API_KEY = config.apiKey;
 
+const getDays = (weatherDataList) => {
+  let days = [];
+  for (let i = 0; i < weatherDataList.length; i+=8) {
+    days.push(weatherDataList.slice(i, i + 8));
+  }
+  return days;
+}
+
 class App extends Component {
   state = {
-
+    days: [],
   };
+
+
+  
 
   getWeather = async (e) => {
     e.preventDefault();
-    const numberOfDays = 5;
-    const city = e.target.city.value
+    
     const country = e.target.country.value;
     const zipcode = e.target.zipcode.value;
-    console.log("city: ", city);
-    console.log("country: ", country);
-    console.log("zipcode: ", zipcode)
+
+    const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipcode},${country}&appid=${API_KEY}`)
+    const weatherData = await apiCall.json();
+
+    const days = getDays(weatherData.list);
+
+    this.setState({
+      days
+    })
   }
 
   render() {
-    console.log(API_KEY);
+    const { days } = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -33,8 +49,14 @@ class App extends Component {
           <h1 className="App-title">Weather App</h1>
         </header>
         <div className="weather-wrapper">
-          <WeatherCard />
+          <div className="weather-card-container">
+          {
+            days.map((day, idx) => <WeatherCard key={idx} data={day}/>)
+          }
+          {/* <WeatherCard /> */}
+          </div>
           <div className="form-container">
+            <h3>Enter your location</h3>
             <Form getWeather={this.getWeather}/>
           </div>
         </div>
