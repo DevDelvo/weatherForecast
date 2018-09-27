@@ -49,6 +49,7 @@
   display: inline-block;
   background-color: grey;
   color: white;
+  text-align: left;
 }
 
 .weather-card {
@@ -63,4 +64,13 @@
 
 .form-container {
   padding: 20px;
+}
+
+.submit-form {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-form>div {
+  padding-left: 10px;
 }
