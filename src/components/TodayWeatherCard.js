@@ -12,11 +12,11 @@ const TodayWeatherCard = (props) => {
         return (
             <div className="today-weather-card">
                 Today's Weather
-                <span>City: {city}</span>
-                <span>Temp: {temp}</span>
-                <span>High: {temp_max}</span>
-                <span>Low: {temp_min}</span>
-                <span>humidity: {humidity}</span>
+                <div>City: {city}</div>
+                <div>Temp: {temp}</div>
+                <div>High: {temp_max}</div>
+                <div>Low: {temp_min}</div>
+                <div>humidity: {humidity}</div>
             </div>
         )
     } else {

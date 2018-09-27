@@ -19,10 +19,10 @@ const WeatherCard = (props) => {
     // console.log(weather);
     return (
         <div className="weather-card">
-            <span>Date: {date}</span>
-            <span>Temp: {temp}</span>
-            <span>High: {maxTemp}</span>
-            <span>Low: {minTemp}</span>
+            <div>Date: {date}</div>
+            <div>Temp: {temp}</div>
+            <div>High: {maxTemp}</div>
+            <div>Low: {minTemp}</div>
         </div>
     )
 }
