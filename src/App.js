@@ -29,17 +29,17 @@ class App extends Component {
     e.preventDefault();
     
     const country = e.target.country.value;
-    const zipcode = e.target.zipcode.value;
+    const zipCode = e.target.zipCode.value;
 
-    const todayWeatherCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},${country}&appid=${API_KEY}`);
-    const weatherForecastAPICall = await fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipcode},${country}&appid=${API_KEY}`)
+    const todayWeatherCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${country}&units=imperial&appid=${API_KEY}`);
+    const weatherForecastAPICall = await fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipCode},${country}&units=imperial&appid=${API_KEY}`)
     
     const todayWeatherData = await todayWeatherCall.json();
     const weatherForecastData = await weatherForecastAPICall.json();
 
     const today = todayWeatherData;
     const days = getDays(weatherForecastData.list);
-    if (country && zipcode) {
+    if (country && zipCode) {
       this.setState({
       today,
       days,
@@ -55,7 +55,7 @@ class App extends Component {
 
   render() {
     const { today, days, isLoaded } = this.state
-    console.log(today);
+    // console.log(today);
     return (
       <div className="App">
         <header className="App-header">

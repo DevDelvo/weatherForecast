@@ -1,6 +1,6 @@
 # Weather Forecast App
 
-By [Kevin Delvo]
+By [Kevin Delvo] for Buildit @ wipro digital
 
 [kevindelvo.com]
 

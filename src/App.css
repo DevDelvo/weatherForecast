@@ -8,10 +8,10 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #241c1c;
   height: 60px;
   padding: 15px;
-  color: white;
+  color: #f7f5f5;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -44,22 +44,24 @@
 }
 
 .today-weather-card {
-  width: 210px;
+  width: 90%;
   padding: 10px;
   display: inline-block;
-  background-color: grey;
-  color: white;
+  background-color: transparent;
   text-align: left;
 }
 
 .weather-card {
-  width: 210px;
+  max-width: 210px;
+  height: 250px;
   padding: 10px;
   display: inline-block;
-  margin-right: 4px;
+  margin-right: 10px;
   margin-bottom: 24px;
-  background-color: grey;
-  color: white;
+  background-color: #c0bbbb;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
 
 .form-container {
