@@ -11,7 +11,7 @@ const TodayWeatherCard = (props) => {
         const weather = data.weather[0];
         const weatherIcon = `http://openweathermap.org/img/w/${weather.icon}.png`
         const weatherDesc = weather.description;
-        console.log('todays weather data: ', data);
+        // console.log('todays weather data: ', data);
 
         return (
             <div className="today-weather-card">

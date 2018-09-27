@@ -11,9 +11,22 @@ const API_KEY = config.apiKey;
 
 const getDays = (weatherDataList) => {
   let days = [];
-  for (let i = 0; i < weatherDataList.length; i+=8) {
-    days.push(weatherDataList.slice(i, i + 8));
+  let dateText = weatherDataList[0].dt_txt.slice(0,10);
+  let day = [];
+
+  for (let i = 0; i < weatherDataList.length; i++) {
+    let current = weatherDataList[i].dt_txt.slice(0,10);
+    if (dateText === current) {
+      day.push(weatherDataList[i]);
+    } else if (dateText !== current) {
+      days.push(day);
+      day = [];
+      day.push(weatherDataList[i]);
+      dateText = weatherDataList[i].dt_txt.slice(0,10);
+      
+    }
   }
+  days.push(day)
   return days;
 }
 
@@ -50,12 +63,10 @@ class App extends Component {
         ...this.state, error: 'Please enter proper country and zip code.'
       })
     }
-    
   }
 
   render() {
     const { today, days, isLoaded } = this.state
-    // console.log(today);
     return (
       <div className="App">
         <header className="App-header">
