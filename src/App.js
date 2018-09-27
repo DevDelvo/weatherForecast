@@ -21,10 +21,9 @@ class App extends Component {
   state = {
     today: {},
     days: [],
+    isLoaded: false,
+    error: ''
   };
-
-
-  
 
   getWeather = async (e) => {
     e.preventDefault();
@@ -40,15 +39,22 @@ class App extends Component {
 
     const today = todayWeatherData;
     const days = getDays(weatherForecastData.list);
-
-    this.setState({
+    if (country && zipcode) {
+      this.setState({
       today,
-      days
-    })
+      days,
+      isLoaded: true
+      });
+    } else {
+      this.setState({
+        ...this.state, error: 'Please enter proper country and zip code.'
+      })
+    }
+    
   }
 
   render() {
-    const { today, days } = this.state
+    const { today, days, isLoaded } = this.state
     console.log(today);
     return (
       <div className="App">
@@ -62,7 +68,7 @@ class App extends Component {
             <Form getWeather={this.getWeather}/>
           </div>
           <div className="today-weather-card">
-          
+            <TodayWeatherCard isLoaded={isLoaded} data={today} />
           </div>
           <div className="weather-card-container">
           {
@@ -71,7 +77,7 @@ class App extends Component {
           </div>
         </div>
       </div>
-    );
+    ) 
   }
 }
 

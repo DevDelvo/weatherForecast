@@ -44,6 +44,15 @@
   flex-direction: row;
 }
 
+.today-weather-card {
+  width: 210px;
+  display: inline-block;
+  margin-right: 4px;
+  margin-bottom: 24px;
+  background-color: grey;
+  color: white;
+}
+
 .weather-card {
   width: 210px;
   display: inline-block;
