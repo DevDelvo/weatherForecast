@@ -49,4 +49,10 @@
   display: inline-block;
   margin-right: 4px;
   margin-bottom: 24px;
+  background-color: grey;
+  color: white;
+}
+
+.form-container {
+  align-items: left;
 }
