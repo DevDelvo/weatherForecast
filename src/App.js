@@ -67,7 +67,7 @@ class App extends Component {
             <h3>Enter your location</h3>
             <Form getWeather={this.getWeather}/>
           </div>
-          <div className="today-weather-card">
+          <div className="today-weather-card-container">
             <TodayWeatherCard isLoaded={isLoaded} data={today} />
           </div>
           <div className="weather-card-container">

@@ -9,8 +9,8 @@
 
 .App-header {
   background-color: #222;
-  height: 80px;
-  padding: 20px;
+  height: 60px;
+  padding: 15px;
   color: white;
   display: flex;
   align-content: center;
@@ -32,29 +32,28 @@
 
 
 .weather-wrapper {
-  margin-top: 40px;
   margin-left: 50px;
   margin-right: 50px;
 }
 
 .weather-card-container {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  margin-top: 24px;
-  flex-direction: row;
+  flex-direction: row; */
+  margin-top: 10px;
 }
 
 .today-weather-card {
   width: 210px;
+  padding: 10px;
   display: inline-block;
-  margin-right: 4px;
-  margin-bottom: 24px;
   background-color: grey;
   color: white;
 }
 
 .weather-card {
   width: 210px;
+  padding: 10px;
   display: inline-block;
   margin-right: 4px;
   margin-bottom: 24px;
@@ -63,5 +62,5 @@
 }
 
 .form-container {
-  align-items: left;
+  padding: 20px;
 }

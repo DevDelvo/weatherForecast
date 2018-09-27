@@ -14,7 +14,6 @@ const WeatherCard = (props) => {
     const weatherDescription = data[0].weather[0].description;
     const weatherIcon = data[0].weather[0].icon;
 
-
     // console.log(data[0]);
     // console.log(weather);
     return (
