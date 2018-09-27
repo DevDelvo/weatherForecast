@@ -27,7 +27,7 @@ const getDays = (weatherDataList) => {
     }
   }
   days.push(day)
-  return days;
+  return days.slice(1);
 }
 
 class App extends Component {

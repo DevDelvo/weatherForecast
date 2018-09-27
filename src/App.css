@@ -52,8 +52,9 @@
 }
 
 .weather-card {
+  width: 150px;
   max-width: 210px;
-  height: 250px;
+  height: 110%;
   padding: 10px;
   display: inline-block;
   margin-right: 10px;

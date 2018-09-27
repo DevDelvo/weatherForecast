@@ -10,7 +10,20 @@ export const getDate = (dateString) => {
         const minutes = date.getMinutes();
         return `${day}, ${month} ${date.getDate()} ${hours}:${minutes}`; 
     } else {
+        const dateObj = {};
         const date = new Date(dateString);
-        return;
+        dateObj.day = days[date.getDay()];
+        dateObj.month = months[date.getMonth()];
+        if (date.getHours() < 10) {
+            dateObj.hours = "0" + date.getHours();
+        } else {
+            dateObj.hours = date.getHours();
+        }
+        if (date.getMinutes() < 10) {
+            dateObj.minutes = "0" + date.getMinutes();
+        } else {
+            dateObj.minutes = date.getMinutes();
+        }
+        return dateObj;
     }
 }
