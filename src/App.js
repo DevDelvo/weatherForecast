@@ -27,11 +27,12 @@ const getDays = (weatherDataList) => {
     }
   }
   days.push(day)
-  return days.slice(1);
+  return days;
 }
 
 class App extends Component {
   state = {
+    toggleFahrenheit: '',
     today: {},
     days: [],
     isLoaded: false,

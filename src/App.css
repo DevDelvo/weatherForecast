@@ -36,6 +36,10 @@
   margin-right: 50px;
 }
 
+.today-weather-card-container {
+
+}
+
 .weather-card-container {
   /* display: flex;
   flex-wrap: wrap;
@@ -46,9 +50,13 @@
 .today-weather-card {
   width: 90%;
   padding: 10px;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   background-color: transparent;
-  text-align: left;
+}
+
+.today-weather-card>div {
+  padding: 10px;
 }
 
 .weather-card {
@@ -63,6 +71,10 @@
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+}
+
+.weather-card>div {
+  padding: 5px;
 }
 
 .form-container {
