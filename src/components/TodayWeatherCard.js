@@ -18,7 +18,7 @@ const TodayWeatherCard = (props) => {
                 <div>{city}</div>
                 <div><span>{todaysDate}</span></div>
                 <div><img src={weatherIcon} />{temp}°</div>
-                <div>{temp_max}° / {temp_min}°</div>
+                <div>{Math.floor(temp_max)}° / {Math.floor(temp_min)}°</div>
                 <div>{weatherDesc}</div>
             </div>
         )
