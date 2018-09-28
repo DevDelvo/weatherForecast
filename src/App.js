@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import { config } from './config'
-import TodayWeatherCard from './components/TodayWeatherCard'
-import WeatherCard from './components/WeatherCard'
-import Form from './components/Form'
+import { config } from './config';
+import TodayWeatherCard from './components/TodayWeatherCard';
+import WeatherCard from './components/WeatherCard';
+import DetailedForecastCard from './components/DetailedForecastCard';
+import Form from './components/Form';
 
 const API_KEY = config.apiKey;
 
@@ -33,11 +34,12 @@ const getDays = (weatherDataList) => {
 class App extends Component {
   state = {
     inputMessage: 'Enter your location',
-    toggleFahrenheit: '',
+    displayFahrenheit: true,
     today: {},
     days: [],
-    isLoaded: false,
-    
+    todayForecast: false,
+    currentForecastDisplay: {},
+    forecastDisplay: false,
   };
 
   getWeather = async (e) => {
@@ -51,15 +53,13 @@ class App extends Component {
     
     const todayWeatherData = await todayWeatherCall.json();
     const weatherForecastData = await weatherForecastAPICall.json();
-    console.log(todayWeatherCall)
-    console.log(weatherForecastAPICall)
     if (todayWeatherCall.status === 200 && weatherForecastAPICall.status === 200) {
       const today = todayWeatherData;
       const days = getDays(weatherForecastData.list);
       this.setState({
       today,
       days,
-      isLoaded: true,
+      todayForecast: true,
       inputMessage: 'Enter your location'
       });
     } else {
@@ -69,8 +69,25 @@ class App extends Component {
     }
   }
 
+  toggleFahrenheit = () => {
+    this.setState({
+      ...this.state, displayFahrenheit: !this.state.displayFahrenheit
+    })
+  }
+
+  changeForecastDisplay = (e) => {
+    e.preventDefault;
+    console.log('clicked')
+    // this.setState({
+    //   ...this.state, 
+    //   todayForecast: false, 
+    //   forecastDisplay: true, 
+    //   currentForecastDisplay: data
+    // })
+  }
+
   render() {
-    const { inputMessage, today, days, isLoaded } = this.state
+    const { inputMessage, today, days, todayForecast, displayFahrenheit, currentForecastDisplay } = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -80,14 +97,25 @@ class App extends Component {
         <div className="weather-wrapper">
           <div className="form-container">
             <h3>{inputMessage}</h3>
-            <Form getWeather={this.getWeather}/>
+            <Form getWeather={this.getWeather} />
           </div>
           <div className="today-weather-card-container">
-            <TodayWeatherCard isLoaded={isLoaded} data={today} />
+            <TodayWeatherCard todayForecast={todayForecast} 
+                              toggleFahrenheit={this.toggleFahrenheit}
+                              displayFahrenheit={displayFahrenheit} 
+                              data={today} />
+          </div>
+          <div className="detailed-forest-card-container">
+            <DetailedForecastCard toggleFahrenheit={this.toggleFahrenheit} 
+                                  displayFahrenheit={displayFahrenheit} 
+                                  currentForecastDisplay={currentForecastDisplay} />
           </div>
           <div className="weather-card-container">
           {
-            days.map((day, idx) => <WeatherCard key={idx} data={day}/>)
+            days.map((day, idx) => <WeatherCard key={idx} 
+                                                displayFahrenheit={displayFahrenheit} 
+                                                data={day} 
+                                                changeForecastDisplay={this.changeForecastDisplay} />)
           }
           </div>
         </div>

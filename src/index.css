@@ -1,3 +1,6 @@
+html {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgb(50, 148, 240)), to(rgb(107, 19, 158)));
+}
 body {
   margin: 0;
   padding: 0;

@@ -1,9 +1,9 @@
 import React from 'react';
-import { getDate } from '../dateData';
+import { getDate, getCelsius } from '../dateData';
 
 const TodayWeatherCard = (props) => {
-    const { data, isLoaded } = props;
-    if (isLoaded) {
+    const { data, todayForecast } = props;
+    if (todayForecast) {
         // const todaysDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
         const todaysDate = getDate();
         const city = data.name;
@@ -21,7 +21,7 @@ const TodayWeatherCard = (props) => {
                     <div><span>{todaysDate}</span></div>
                     <div>
                         <img className="today-weather-icon" src={weatherIcon} alt={weatherDesc} />
-                        <div className="today-weather-temperature-container">{temp}°F | °C</div>
+                        <div className="today-weather-temperature-container">{temp}<div><span>°F</span> | <span>°C</span></div></div>
                     </div>
                     <div>{Math.floor(temp_max)}° / {Math.floor(temp_min)}°</div>
                     <div>{weatherDesc}</div>
