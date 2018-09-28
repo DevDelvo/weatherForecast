@@ -38,7 +38,7 @@ class App extends Component {
     today: {},
     days: [],
     todayForecast: false,
-    currentForecastDisplay: {},
+    currentForecastDisplay: [],
     forecastDisplay: false,
   };
 
@@ -75,19 +75,18 @@ class App extends Component {
     })
   }
 
-  changeForecastDisplay = (e) => {
-    e.preventDefault();
-    console.log('clicked')
-    // this.setState({
-    //   ...this.state, 
-    //   todayForecast: false, 
-    //   forecastDisplay: true, 
-    //   currentForecastDisplay: data
-    // })
+  changeForecastDisplay = (data) => {
+    // console.log(data);
+    this.setState({
+      ...this.state, 
+      todayForecast: false, 
+      forecastDisplay: true, 
+      currentForecastDisplay: data
+    })
   }
 
   render() {
-    const { inputMessage, today, days, todayForecast, displayFahrenheit, currentForecastDisplay } = this.state
+    const { inputMessage, today, days, todayForecast, displayFahrenheit, currentForecastDisplay, forecastDisplay } = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -108,14 +107,15 @@ class App extends Component {
           <div className="detailed-forest-card-container">
             <DetailedForecastCard toggleFahrenheit={this.toggleFahrenheit} 
                                   displayFahrenheit={displayFahrenheit} 
-                                  currentForecastDisplay={currentForecastDisplay} />
+                                  currentForecastDisplay={currentForecastDisplay} 
+                                  forecastDisplay={forecastDisplay} />
           </div>
           <div className="weather-card-container">
           {
-            days.map((day, idx) => <WeatherCard key={idx} 
+            days.map((day) => <WeatherCard key={day[0].dt_txt} 
                                                 displayFahrenheit={displayFahrenheit} 
                                                 data={day} 
-                                                changeForecastDisplay={this.changeForecastDisplay} />)
+                                                changeForecastDisplay={() => this.changeForecastDisplay(day)} />)
           }
           </div>
         </div>

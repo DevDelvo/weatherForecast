@@ -2,19 +2,14 @@ import React from 'react';
 
 class DetailedForecastCard extends React.Component {
     state ={
-        data: [],
-    }
-
-    componentDidMount() {
-        this.setState({
-            data: this.props.data,
-        })
+        displayFahrenheit: true,
     }
 
     render() {
-        const { forecastDisplay } = this.props;
-        return forecastDisplay ? (
-            <div className="detailed-forecast-card">
+        const { changeForecastDisplay, currentForecastDisplay, forecastDisplay } = this.props;
+        console.log(currentForecastDisplay)
+        return forecastDisplay === true ? (
+            <div className="detailed-forecast-card" onClick={changeForecastDisplay}>
                 <div className="detailed-forecast-card-info">
                     <div>City</div>
                     <div><span>The Date</span></div>
