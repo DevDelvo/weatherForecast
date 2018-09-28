@@ -8,7 +8,7 @@ const WeatherCard = (props) => {
     const maxTemp = Math.floor(data[4].main.temp_max);
     const minTemp = Math.floor(data[4].main.temp_min);
     const weather = data[4].weather[0];
-    const weatherDescription = data[3].weather[0].description;
+    // const weatherDescription = data[3].weather[0].description;
     const weatherIcon = `http://openweathermap.org/img/w/${weather.icon}.png`
     // console.log(dateObj);
     // console.log(data);

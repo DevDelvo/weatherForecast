@@ -32,11 +32,12 @@ const getDays = (weatherDataList) => {
 
 class App extends Component {
   state = {
+    inputMessage: 'Enter your location',
     toggleFahrenheit: '',
     today: {},
     days: [],
     isLoaded: false,
-    error: ''
+    
   };
 
   getWeather = async (e) => {
@@ -50,24 +51,26 @@ class App extends Component {
     
     const todayWeatherData = await todayWeatherCall.json();
     const weatherForecastData = await weatherForecastAPICall.json();
-
-    const today = todayWeatherData;
-    const days = getDays(weatherForecastData.list);
-    if (country && zipCode) {
+    console.log(todayWeatherCall)
+    console.log(weatherForecastAPICall)
+    if (todayWeatherCall.status === 200 && weatherForecastAPICall.status === 200) {
+      const today = todayWeatherData;
+      const days = getDays(weatherForecastData.list);
       this.setState({
       today,
       days,
-      isLoaded: true
+      isLoaded: true,
+      inputMessage: 'Enter your location'
       });
     } else {
       this.setState({
-        ...this.state, error: 'Please enter proper country and zip code.'
+        ...this.state, inputMessage: 'Please enter proper country abbreviation and zip code. Or try again at another time.'
       })
     }
   }
 
   render() {
-    const { today, days, isLoaded } = this.state
+    const { inputMessage, today, days, isLoaded } = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -76,7 +79,7 @@ class App extends Component {
         </header>
         <div className="weather-wrapper">
           <div className="form-container">
-            <h3>Enter your location</h3>
+            <h3>{inputMessage}</h3>
             <Form getWeather={this.getWeather}/>
           </div>
           <div className="today-weather-card-container">
