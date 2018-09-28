@@ -12,7 +12,8 @@ class DetailedForecastCard extends React.Component {
     }
 
     render() {
-        return(
+        const { forecastDisplay } = this.props;
+        return forecastDisplay ? (
             <div className="detailed-forecast-card">
                 <div className="detailed-forecast-card-info">
                     <div>City</div>
@@ -32,6 +33,7 @@ class DetailedForecastCard extends React.Component {
                 </div>
             </div>
         )
+        : null;
     }
 }
 

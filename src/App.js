@@ -76,7 +76,7 @@ class App extends Component {
   }
 
   changeForecastDisplay = (e) => {
-    e.preventDefault;
+    e.preventDefault();
     console.log('clicked')
     // this.setState({
     //   ...this.state, 
