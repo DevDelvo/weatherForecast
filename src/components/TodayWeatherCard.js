@@ -1,11 +1,11 @@
 import React from 'react';
-import { getDate, getCelsius } from '../dateData';
+import { getDateFromString, getCelsius } from '../dateData';
 
 const TodayWeatherCard = (props) => {
     const { data, todayForecast } = props;
     if (todayForecast) {
         // const todaysDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
-        const todaysDate = getDate();
+        const todaysDate = getDateFromString();
         const city = data.name;
         const { temp, humidity, temp_min, temp_max } = data.main;
         const weather = data.weather[0];

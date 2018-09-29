@@ -28,7 +28,7 @@ const getDays = (weatherDataList) => {
     }
   }
   days.push(day)
-  return days;
+  return days.length > 5 ? days.slice(1) : days;
 }
 
 class App extends Component {
@@ -60,7 +60,8 @@ class App extends Component {
       today,
       days,
       todayForecast: true,
-      inputMessage: 'Enter your location'
+      inputMessage: 'Enter your location',
+      forecastDisplay: false,
       });
     } else {
       this.setState({
