@@ -8,21 +8,24 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 40px;
+  align-self: center;
 }
 
 .App-header {
   background-color: #241c1c;
-  height: 60px;
+  height: 20px;
+  width: 100%;
   padding: 15px;
   color: #f7f5f5;
   display: flex;
-  align-content: center;
+  /* align-content: center; */
   justify-content: center;
 }
 
 .App-title {
-  /* font-size: 1.5em; */
+  font-size: 1.5em;
+  align-self: center;
 }
 
 .App-intro {
@@ -34,8 +37,13 @@
   to { transform: rotate(360deg); }
 }
 
+/* form */
 .form-container {
-  padding: 20px;
+  padding: 10px;
+}
+
+.input-message {
+  justify-content: center;
 }
 
 .submit-form {
@@ -56,27 +64,29 @@
   margin-right: 50px;
 }
 
+/* today weather card */
 .today-weather-card-container {
 
 }
 
-.weather-card-container {
-  /* display: flex;
-  flex-wrap: wrap;
-  flex-direction: row; */
-  margin-top: 10px;
-}
-
 .today-weather-card {
-  width: 90%;
   padding: 10px;
   display: flex;
   justify-content: center;
-  background-color: transparent;
+  background-color: rgb(63, 142, 216, 0.3);
 }
 
 .today-weather-card>div {
   padding: 10px;
+}
+
+.today-weather-city {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.today-weather-date {
+  font-weight: bold;
 }
 
 .today-weather-temperature-container {
@@ -84,28 +94,75 @@
   justify-content: center;
 }
 
+.today-weather-temperature {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.today-weather-high-low {
+  font-size: .8em;
+}
+
+.today-weather-description {
+  font-style: italic;
+}
+
+.today-weather-togglebox {
+  align-self: center;
+}
+
+/* WEATHER CARD */
+.weather-card-container {
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  margin-top: 5px;
+}
+
 .weather-card {
-  width: 150px;
-  max-width: 210px;
+  width: 80px;
+  max-width: 100px;
   height: 110%;
   padding: 10px;
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 5px;
   margin-bottom: 24px;
+
+  font-size: .9em;
+
   background-color: #c0bbbb;
+  
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+
+  transition: .5s ease;
 }
 
 .weather-card:hover {
   cursor: pointer;
+  transition: .5s ease;
+  transform: translateY(-10px);
 }
+.weather-card-day {
+  font-weight: bold; 
+}
+
+.weather-card-temperature {
+  font-weight: bold;
+}
+
 
 .weather-card>div {
   padding: 5px;
 }
 
+/* CURRENT FORECAST DISPLAY */
+
 .current-forecast-display-container {
   display: flex;
+  margin: 10px;
+}
+
+.current-forecast-display-card {
+  margin-left: 10px;
 }

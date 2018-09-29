@@ -77,7 +77,6 @@ class App extends Component {
   }
 
   changeForecastDisplay = (data) => {
-    // console.log(data);
     this.setState({
       ...this.state, 
       todayForecast: false, 
@@ -97,7 +96,7 @@ class App extends Component {
         </header>
         <div className="weather-wrapper">
           <div className="form-container">
-            <h3>{inputMessage}</h3>
+            <h3 clasName="input-message">{inputMessage}</h3>
             <Form getWeather={this.getWeather} />
           </div>
           <div className="today-weather-card-container">

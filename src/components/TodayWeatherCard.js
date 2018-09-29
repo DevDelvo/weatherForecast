@@ -17,18 +17,21 @@ const TodayWeatherCard = (props) => {
         return (
             <div className="today-weather-card">
                 <div className="today-weather-info">
-                    <div>{city}</div>
-                    <div><span>{todaysDate}</span></div>
+                    <article className="today-weather-city">{city}</article>
+                    <div className="today-weather-date"><article>{todaysDate}</article></div>
                     <div>
                         <img className="today-weather-icon" src={weatherIcon} alt={weatherDesc} />
-                        <div className="today-weather-temperature-container">{temp}<div><span>°F</span> | <span>°C</span></div></div>
+                        <div className="today-weather-temperature-container">
+                            <article className="today-weather-temperature">{temp}</article>
+                            <div><span>°F</span> | <span>°C</span></div>
+                        </div>
                     </div>
-                    <div>{Math.floor(temp_max)}° / {Math.floor(temp_min)}°</div>
-                    <div>{weatherDesc}</div>
+                    <article className="today-weather-high-low">{Math.floor(temp_max)}° / {Math.floor(temp_min)}°</article>
+                    <article className="today-weather-description">{weatherDesc}</article>
                 </div>
                 <div className="today-weather-togglebox">
-                    <div>Humidity: {humidity}%</div>
-                    <div>Wind: {wind.speed} mph</div>
+                    <article>Humidity: {humidity}%</article>
+                    <article>Wind: {wind.speed} mph</article>
                 </div>
             </div>
         )

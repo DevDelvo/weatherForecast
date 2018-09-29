@@ -15,10 +15,10 @@ const WeatherCard = (props) => {
     // console.log(weather);
     return (
         <div className="weather-card" onClick={changeForecastDisplay}>
-            <div>{dateObj.day}</div>
+            <div className="weather-card-day">{dateObj.day}</div>
             <div>{dateObj.hours}:{dateObj.minutes}</div>
             <div><img src={weatherIcon} alt={weatherDescription} /></div>
-            <div>{temp}°</div>
+            <div className="weather-card-temperature">{temp}°</div>
             <div>{maxTemp}° / {minTemp}°</div>
             <div></div>
         </div>
