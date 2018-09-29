@@ -88,6 +88,7 @@ class App extends Component {
 
   render() {
     const { inputMessage, today, days, todayForecast, displayFahrenheit, currentForecastDisplay, forecastDisplay } = this.state
+    const city = today.name;
     return (
       <div className="App">
         <header className="App-header">
@@ -107,6 +108,7 @@ class App extends Component {
           </div>
           <div className="detailed-forest-card-container">
             <DetailedForecastCard toggleFahrenheit={this.toggleFahrenheit} 
+                                  city={city}
                                   displayFahrenheit={displayFahrenheit} 
                                   currentForecastDisplay={currentForecastDisplay} 
                                   forecastDisplay={forecastDisplay} />

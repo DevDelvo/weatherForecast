@@ -9,10 +9,12 @@ class DetailedForecastCard extends React.Component {
     displayedForecast = (currentForecastDisplay) => {
         
         return currentForecastDisplay.map(forecast => {
-            return <div className="current-forecast-display-card">
+            const dayObj = getDateFromString(forecast.dt_txt);
+            return <div className="current-forecast-display-card" key={forecast.dt_txt}>
                     <span>
                         <span>
                             <article></article>
+                            <article>{dayObj.hours}:{dayObj.minutes}</article>
                             <img className="today-weather-icon" src={`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`} alt={forecast.weather[0].description} />
                             <span className="today-weather-temperature-container">{forecast.main.temp}<span><span>°F</span> | <span>°C</span></span></span>
                         </span>
@@ -29,22 +31,26 @@ class DetailedForecastCard extends React.Component {
     }
 
     render() {
-        const { changeForecastDisplay, currentForecastDisplay, forecastDisplay } = this.props;
-        // const dayObj = getDateFromString(currentForecastDisplay[0].dt_txt);
-        return forecastDisplay === true ? (
-            <div className="detailed-forecast-card" onClick={changeForecastDisplay}>
-                <div className="detailed-forecast-card-info">
-                    <article>City</article>
-                    <div><span>The Date</span></div>
-                    <div className="current-forecast-display-container">
-                        {
-                            this.displayedForecast(currentForecastDisplay)
-                        }
+        const { city, changeForecastDisplay, currentForecastDisplay, forecastDisplay } = this.props;
+        if (forecastDisplay) {
+            const dayObj = currentForecastDisplay !== [] ? getDateFromString(currentForecastDisplay[0].dt_txt) : null;
+            console.log(dayObj);
+            return  (
+                <div className="detailed-forecast-card" onClick={changeForecastDisplay}>
+                    <div className="detailed-forecast-card-info">
+                        <article>{city}</article>
+                        <div><span>{dayObj.day}, {dayObj.month} {dayObj.date}</span></div>
+                        <div className="current-forecast-display-container">
+                            {
+                                this.displayedForecast(currentForecastDisplay)
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
-        : null;
+            )
+        } else {
+            return null;
+        }
     }
 }
 

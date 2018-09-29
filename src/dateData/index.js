@@ -13,6 +13,7 @@ export const getDateFromString = (dateString) => {
         const dateObj = {};
         const date = new Date(dateString);
         dateObj.day = days[date.getDay()];
+        dateObj.date = date.getDate();
         dateObj.month = months[date.getMonth()];
         if (date.getHours() < 10) {
             dateObj.hours = "0" + date.getHours();

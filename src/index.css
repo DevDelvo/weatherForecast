@@ -1,9 +1,7 @@
-html {
-  background-image: -webkit-gradient(linear, left top, right bottom, from(rgb(50, 148, 240)), to(rgb(107, 19, 158)));
-}
 body {
   margin: 0;
   padding: 0;
   font-family: Roboto, sans-serif;
   font-weight: 300;
+  background: linear-gradient(to top left, rgb(100, 65, 226), rgb(17, 29, 192)) fixed;
 }
