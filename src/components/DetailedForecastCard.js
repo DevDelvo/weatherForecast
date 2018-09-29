@@ -22,7 +22,7 @@ class DetailedForecastCard extends React.Component {
                         <span>{forecast.weather[0].description}</span>
                     </span>
                     <span className="today-weather-togglebox">
-                        <span>Humidity: {forecast.main.humidity}%</span>
+                        <span>Hum: {forecast.main.humidity}%</span>
                         <span>Wind: {forecast.wind.speed} mph</span>
                     </span>
                    </div>
