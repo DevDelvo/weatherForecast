@@ -12,41 +12,29 @@ const TodayWeatherCard = (props) => {
         const weatherDesc = weather.description;
         const wind = data.wind;
         let { temp, temp_min, temp_max } = data.main;
-        let fahrenheitStyle;
-        let celsiusStyle;
-        
-        if (displayFahrenheit) {
-            fahrenheitStyle = "temperature-toggle-button active";
-            celsiusStyle = "temperature-toggle-button";
-        } else {
-            fahrenheitStyle = "temperature-toggle-button";
-            celsiusStyle = "temperature-toggle-button active";
-            temp = getCelsius(temp);
-            temp_min = getCelsius(temp_min);
-            temp_max = getCelsius(temp_max);
-        }
-
-
+ 
         return (
-            <div className="today-weather-card">
+            <article className="today-weather-card">
                 <div className="today-weather-info">
-                    <article className="city">{city}</article>
-                    <div className="date"><article>{todaysDate}</article></div>
+                    <h1 className="city">{city}</h1>
+                    <div className="date"><h3>{todaysDate}</h3></div>
                     <div>
                         <img className="today-weather-icon" src={weatherIcon} alt={weatherDesc} />
                         <div className="today-weather-temperature-container">
-                            <article className="today-temperature">{temp}</article>
-                            <div className="temperature-toggle"><span className={fahrenheitStyle} onClick={toggleFahrenheit}>°F</span> | <span className={celsiusStyle} onClick={toggleFahrenheit}>°C</span></div>
+                            <div className="today-temperature">{temp}</div>
+                            <div className="temperature-toggle">
+                                <span  className={`temperature-toggle-button ${displayFahrenheit ? 'active': ''}`} onClick={toggleFahrenheit}>°F</span> | <span className={`temperature-toggle-button ${displayFahrenheit ? '': 'active'}`} onClick={toggleFahrenheit}>°C</span>
+                            </div>
                         </div>
                     </div>
-                    <article className="weather-high-low">{Math.floor(temp_max)}° / {Math.floor(temp_min)}°</article>
-                    <article className="today-weather-description">{weatherDesc}</article>
+                    <p className="weather-high-low">{Math.floor(temp_max)}° / {Math.floor(temp_min)}°</p>
+                    <p className="today-weather-description">{weatherDesc}</p>
                 </div>
                 <div className="today-weather-togglebox">
-                    <article>Humidity: {humidity}%</article>
-                    <article>Wind: {wind.speed}mph</article>
+                    <h4>Humidity: {humidity}%</h4>
+                    <h4>Wind: {wind.speed}mph</h4>
                 </div>
-            </div>
+            </article>
         )
     } else {
         return null;

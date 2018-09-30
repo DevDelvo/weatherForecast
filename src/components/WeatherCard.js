@@ -16,26 +16,16 @@ const WeatherCard = (props) => {
     const weather = data[4].weather[0];
     const weatherDescription = data[4].weather[0].description;
     const weatherIcon = `http://openweathermap.org/img/w/${weather.icon}.png`
-    let weatherCardStyle = "weather-card ";
 
-    if (currentForecastDisplay !== data) {
-        weatherCardStyle = "weather-card ";
-    }
-    if (currentForecastDisplay === data) {
-        weatherCardStyle += "weather-card-active";
-    }
-    // console.log(dateObj);
-    // console.log(data);
-    // console.log(weather);
     return (
-        <div className={weatherCardStyle} onClick={changeForecastDisplay}>
+        <article className={`weather-card ${currentForecastDisplay === data ? 'weather-card-active' : ''}`} onClick={changeForecastDisplay}>
             <div className="weather-card-day">{dateObj.day}</div>
-            <div>{dateObj.hours}:{dateObj.minutes}</div>
+            {/* <div>{dateObj.hours}:{dateObj.minutes}</div> */}
             <div><img src={weatherIcon} alt={weatherDescription} /></div>
             <div className="weather-card-temperature">{temp}°</div>
             <div>{maxTemp}° / {minTemp}°</div>
             <div></div>
-        </div>
+        </article>
     )
 }
 

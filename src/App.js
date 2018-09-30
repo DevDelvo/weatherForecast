@@ -11,12 +11,12 @@ import Form from './components/Form';
 const API_KEY = config.apiKey;
 
 const getDays = (weatherDataList) => {
-  let days = [];
+  const days = [];
   let dateText = weatherDataList[0].dt_txt.slice(0,10);
   let day = [];
 
   for (let i = 0; i < weatherDataList.length; i++) {
-    let current = weatherDataList[i].dt_txt.slice(0,10);
+    const current = weatherDataList[i].dt_txt.slice(0,10);
     if (dateText === current) {
       day.push(weatherDataList[i]);
     } else if (dateText !== current) {
@@ -32,7 +32,7 @@ const getDays = (weatherDataList) => {
 }
 
 const initialState = {
-  inputMessage: 'Enter your location. Default is US.',
+  inputMessage: 'Enter country code and zip code. Default is US if no country code.',
     displayFahrenheit: true,
     today: {},
     days: [],
@@ -70,12 +70,12 @@ class App extends Component {
       today,
       days,
       todayForecast: true,
-      inputMessage: 'Enter your location. Default is US.',
+      inputMessage: 'Enter country code and zip code. Default is US if no country code.',
       forecastDisplay: false,
       });
     } else {
       this.setState({
-        ...initialState, inputMessage: 'Please enter proper country abbreviation and zip code. Or try again at another time.'
+        initialState, inputMessage: 'Please enter proper country abbreviation and zip code. Or try again at another time.'
       })
     }
   }
