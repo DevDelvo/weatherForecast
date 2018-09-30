@@ -1,8 +1,8 @@
 import React from 'react';
-import { getDateFromString, getCelsius } from '../dateData';
+import { getDateFromString } from '../dateData';
 
 const TodayWeatherCard = (props) => {
-    const { data, todayForecast, displayFahrenheit, toggleFahrenheit } = props;
+    const { data, todayForecast, displayFahrenheit, toggleFahrenheit, getCelsius } = props;
     if (todayForecast) {
         // const todaysDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
         const todaysDate = getDateFromString();

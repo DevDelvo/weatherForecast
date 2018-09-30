@@ -76,6 +76,10 @@ class App extends Component {
     })
   }
 
+  getCelsius = (temp) => {
+    return Math.round((temp - 32) * .5556);
+  }
+
   changeForecastDisplay = (data) => {
     this.setState({
       ...this.state, 
@@ -96,19 +100,21 @@ class App extends Component {
         </header>
         <div className="weather-wrapper">
           <div className="form-container">
-            <h3 clasName="input-message">{inputMessage}</h3>
+            <h3 className="input-message">{inputMessage}</h3>
             <Form getWeather={this.getWeather} />
           </div>
           <div className="today-weather-card-container">
             <TodayWeatherCard todayForecast={todayForecast} 
                               toggleFahrenheit={this.toggleFahrenheit}
                               displayFahrenheit={displayFahrenheit} 
+                              getCelsius={this.getCelsius}
                               data={today} />
           </div>
           <div className="detailed-forest-card-container">
             <DetailedForecastCard toggleFahrenheit={this.toggleFahrenheit} 
                                   city={city}
                                   displayFahrenheit={displayFahrenheit} 
+                                  getCelsius={this.getCelsius}
                                   currentForecastDisplay={currentForecastDisplay} 
                                   forecastDisplay={forecastDisplay} />
           </div>
@@ -116,6 +122,7 @@ class App extends Component {
           {
             days.map((day) => <WeatherCard key={day[0].dt_txt} 
                                                 displayFahrenheit={displayFahrenheit} 
+                                                getCelsius={this.getCelsius}
                                                 data={day} 
                                                 changeForecastDisplay={() => this.changeForecastDisplay(day)} />)
           }

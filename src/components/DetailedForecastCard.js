@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDateFromString, getCelsius } from '../dateData'
+import { getDateFromString } from '../dateData'
 
 class DetailedForecastCard extends React.Component {
     state ={
@@ -10,7 +10,7 @@ class DetailedForecastCard extends React.Component {
         
         return currentForecastDisplay.map(forecast => {
             const dayObj = getDateFromString(forecast.dt_txt);
-            const { toggleFahrenheit, displayFahrenheit } = this.props;
+            const { toggleFahrenheit, displayFahrenheit, getCelsius } = this.props;
             let temp = forecast.main.temp;
             let temp_max = forecast.main.temp_max;
             let temp_min = forecast.main.temp_min;
@@ -29,7 +29,7 @@ class DetailedForecastCard extends React.Component {
                             <article className="forecast-time">{dayObj.hours}:{dayObj.minutes}</article>
                             <img className="current-forecast-icon" src={`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`} alt={forecast.weather[0].description} />
                             <div className="current-forecast-temperature-container">
-                                <article className="forecast-temperature">{forecast.main.temp}</article>
+                                <article className="forecast-temperature">{temp}</article>
                                 <div className="temperature-toggle"><span className={fahrenheitStyle} onClick={toggleFahrenheit}>°F</span> | <span className={celsiusStyle} onClick={toggleFahrenheit}>°C</span></div>
                             </div>
                         </span>

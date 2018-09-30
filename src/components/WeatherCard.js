@@ -1,8 +1,8 @@
 import React from 'react';
-import { getDateFromString, getCelsius } from '../dateData'
+import { getDateFromString } from '../dateData'
 
 const WeatherCard = (props) => {
-    const { data, displayFahrenheit, changeForecastDisplay } = props;
+    const { data, displayFahrenheit, changeForecastDisplay, getCelsius } = props;
     const dateObj = getDateFromString(data[4].dt_txt);
     let temp = data[0].main.temp;
     let maxTemp = Math.floor(data[4].main.temp_max);

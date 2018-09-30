@@ -28,7 +28,3 @@ export const getDateFromString = (dateString) => {
         return dateObj;
     }
 }
-
-export const getCelsius = (temp) => {
-    return Math.round((temp - 32) * .5556);
-}
