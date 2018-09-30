@@ -19,12 +19,11 @@ const getDays = (weatherDataList) => {
     const current = weatherDataList[i].dt_txt.slice(0,10);
     if (dateText === current) {
       day.push(weatherDataList[i]);
-    } else if (dateText !== current) {
+    } else {
       days.push(day);
       day = [];
       day.push(weatherDataList[i]);
       dateText = weatherDataList[i].dt_txt.slice(0,10);
-      
     }
   }
   days.push(day)
@@ -44,26 +43,31 @@ const initialState = {
 class App extends Component {
   state = initialState;
 
+  makeAPIRequest = async (forecast, country, zip, units) => {
+    country = country || 'US';
+    const apiLink = `http://api.openweathermap.org/data/2.5/${forecast}?`
+    const params = {
+      zip: zip + ',' + country,
+      units: 'imperial',
+      appid: API_KEY,
+      
+    }
+    const paramString = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
+    const response = await fetch(apiLink + paramString);
+    const weatherData = await response.json();
+    console.log(apiLink + paramString)
+    return weatherData;
+  }
+
   getWeather = async (e) => {
     e.preventDefault();
-    
     const country = e.target.country.value;
     const zipCode = e.target.zipCode.value;
-    let  todayWeatherCall
-    let  weatherForecastAPICall
-    if (country && zipCode) {
-      todayWeatherCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${country}&units=imperial&appid=${API_KEY}`);
-      weatherForecastAPICall = await fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipCode},${country}&units=imperial&appid=${API_KEY}`)
-    }
 
-    if (!country && zipCode) {
-      todayWeatherCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&units=imperial&appid=${API_KEY}`);
-      weatherForecastAPICall = await fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipCode}&units=imperial&appid=${API_KEY}`)
-    }
+    const todayWeatherData = await this.makeAPIRequest('weather', country, zipCode);
+    const weatherForecastData = await this.makeAPIRequest('forecast', country, zipCode);
 
-    const todayWeatherData = await todayWeatherCall.json();
-    const weatherForecastData = await weatherForecastAPICall.json();
-    if (todayWeatherCall.status === 200 && weatherForecastAPICall.status === 200) {
+    if (parseInt(todayWeatherData.cod, 10) === 200) {
       const today = todayWeatherData;
       const days = getDays(weatherForecastData.list);
       this.setState({
@@ -75,7 +79,7 @@ class App extends Component {
       });
     } else {
       this.setState({
-        initialState, inputMessage: 'Please enter proper country abbreviation and zip code. Or try again at another time.'
+        initialState, inputMessage: `Please enter proper country abbreviation and zip code. Or try again at another time.`
       })
     }
   }

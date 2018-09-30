@@ -22,17 +22,22 @@ class Form extends React.Component {
             <form className="submit-form" onSubmit={getWeather}>
                 <div>
                     <label>Country: </label>
-                    <input type="text" 
-                           name="country" 
-                           placeholder="Country Abbreviation" 
-                           onChange={this.handleChange} />
+                    <input 
+                        type="text" 
+                        name="country" 
+                        placeholder="Country Abbreviation" 
+                        onChange={this.handleChange} 
+                    />
                 </div>
                 <div>
                 <label> Zip code: </label>
-                <input type="text" 
-                       name="zipCode" 
-                       placeholder="Zip code" 
-                       onChange={this.handleChange} />
+                <input 
+                    type="text"
+                    className="zipcode-form"
+                    name="zipCode" 
+                    placeholder="Zip code" 
+                    onChange={this.handleChange} 
+                />
                        
                 </div>
                 <button className="get-weather-button" disabled={ !zipCode }>Get Weather</button>

@@ -2,29 +2,18 @@ const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 export const getDateFromString = (dateString) => {
-    if (!dateString) {
-        const date = new Date();
-        const day = days[date.getDay()];
-        const month = months[date.getMonth()];
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-        return `${day}, ${month} ${date.getDate()} ${hours}:${minutes}`; 
-    } else {
-        const dateObj = {};
-        const date = new Date(dateString);
-        dateObj.day = days[date.getDay()];
-        dateObj.date = date.getDate();
-        dateObj.month = months[date.getMonth()];
-        if (date.getHours() < 10) {
-            dateObj.hours = "0" + date.getHours();
-        } else {
-            dateObj.hours = date.getHours();
-        }
-        if (date.getMinutes() < 10) {
-            dateObj.minutes = "0" + date.getMinutes();
-        } else {
-            dateObj.minutes = date.getMinutes();
-        }
-        return dateObj;
-    }
+    const date = new Date(dateString || Date.now());
+    const dateObj = {
+        day: days[date.getDay()],
+        date: date.getDate().toString(),
+        month: months[date.getMonth()],
+        hours: militarizeTime(date.getHours()) ,
+        minutes: militarizeTime(date.getMinutes()),
+        year: date.getFullYear(),
+    };
+    return dateObj;
+}
+
+function militarizeTime(time) {
+    return time < 10 ? '0' + time : time.toString();
 }
