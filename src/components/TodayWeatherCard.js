@@ -5,7 +5,8 @@ import { getDateFromString } from '../dateData';
 const TodayWeatherCard = (props) => {
     const { data, todayForecast, displayFahrenheit, toggleFahrenheit, getCelsius } = props;
     if (todayForecast) {
-        const todaysDate = getDateFromString();
+        const today = getDateFromString();
+        const todaysDate = `${today.day}, ${today.month} ${today.year} ${today.hours}:${today.minutes}`;
         const city = data.name;
         const { humidity,  } = data.main;
         const weather = data.weather[0];
