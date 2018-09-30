@@ -10,21 +10,22 @@ class DetailedForecastCard extends React.Component {
         
         return currentForecastDisplay.map(forecast => {
             const dayObj = getDateFromString(forecast.dt_txt);
-            return <div className="current-forecast-display-card" key={forecast.dt_txt}>
+            return <div className="forecast-display-card" key={forecast.dt_txt}>
                     <span>
                         <span>
-                            <article>{dayObj.hours}:{dayObj.minutes}</article>
+                            <article className="forecast-time">{dayObj.hours}:{dayObj.minutes}</article>
                             <img className="current-forecast-icon" src={`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`} alt={forecast.weather[0].description} />
                             <div className="current-forecast-temperature-container">
-                                <article>{forecast.main.temp}<span>°F</span> | <span>°C</span></article>
+                                <article className="forecast-temperature">{forecast.main.temp}</article>
+                                <div className="temperature-toggle"><span>°F</span> | <span>°C</span></div>
                             </div>
                         </span>
-                        <article>{Math.floor(forecast.main.temp_max)}° / {Math.floor(forecast.main.temp_min)}°</article>
+                        <article className="weather-high-low">{Math.floor(forecast.main.temp_max)}° / {Math.floor(forecast.main.temp_min)}°</article>
                         <span>{forecast.weather[0].description}</span>
                     </span>
-                    <span className="forecast-weather-togglebox">
+                    <span className="forecast-humidity-wind">
                         <article>Hum: {forecast.main.humidity}%</article>
-                        <article>Wind: {forecast.wind.speed} mph</article>
+                        <article>Wind: {forecast.wind.speed}mph</article>
                     </span>
                    </div>
         })
@@ -39,9 +40,9 @@ class DetailedForecastCard extends React.Component {
             return  (
                 <div className="detailed-forecast-card" onClick={changeForecastDisplay}>
                     <div className="detailed-forecast-card-info">
-                        <article>{city}</article>
-                        <article>{dayObj.day}, {dayObj.month} {dayObj.date}</article>
-                        <div className="current-forecast-display-container">
+                        <article className="city">{city}</article>
+                        <article className="date">{dayObj.day}, {dayObj.month} {dayObj.date}</article>
+                        <div className="forecasts-display-container">
                             {
                                 this.displayedForecast(currentForecastDisplay)
                             }

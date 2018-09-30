@@ -30,5 +30,5 @@ export const getDateFromString = (dateString) => {
 }
 
 export const getCelsius = (temp) => {
-    return (temp - 32) * .5556;
+    return Math.round((temp - 32) * .5556);
 }
