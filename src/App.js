@@ -31,26 +31,36 @@ const getDays = (weatherDataList) => {
   return days.length > 5 ? days.slice(1) : days;
 }
 
-class App extends Component {
-  state = {
-    inputMessage: 'Enter your location',
+const initialState = {
+  inputMessage: 'Enter your location. Default is US.',
     displayFahrenheit: true,
     today: {},
     days: [],
     todayForecast: false,
     currentForecastDisplay: [],
     forecastDisplay: false,
-  };
+}
+
+class App extends Component {
+  state = initialState;
 
   getWeather = async (e) => {
     e.preventDefault();
     
     const country = e.target.country.value;
     const zipCode = e.target.zipCode.value;
+    let  todayWeatherCall
+    let  weatherForecastAPICall
+    if (country && zipCode) {
+      todayWeatherCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${country}&units=imperial&appid=${API_KEY}`);
+      weatherForecastAPICall = await fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipCode},${country}&units=imperial&appid=${API_KEY}`)
+    }
 
-    const todayWeatherCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${country}&units=imperial&appid=${API_KEY}`);
-    const weatherForecastAPICall = await fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipCode},${country}&units=imperial&appid=${API_KEY}`)
-    
+    if (!country && zipCode) {
+      todayWeatherCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&units=imperial&appid=${API_KEY}`);
+      weatherForecastAPICall = await fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${zipCode}&units=imperial&appid=${API_KEY}`)
+    }
+
     const todayWeatherData = await todayWeatherCall.json();
     const weatherForecastData = await weatherForecastAPICall.json();
     if (todayWeatherCall.status === 200 && weatherForecastAPICall.status === 200) {
@@ -65,7 +75,7 @@ class App extends Component {
       });
     } else {
       this.setState({
-        ...this.state, inputMessage: 'Please enter proper country abbreviation and zip code. Or try again at another time.'
+        ...initialState, inputMessage: 'Please enter proper country abbreviation and zip code. Or try again at another time.'
       })
     }
   }

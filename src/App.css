@@ -49,9 +49,11 @@
 .submit-form {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .submit-form>div {
+  padding-top: 10px;
   padding-left: 10px;
 }
 

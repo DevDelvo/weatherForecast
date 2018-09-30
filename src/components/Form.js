@@ -16,24 +16,24 @@ class Form extends React.Component {
 
     render() {
         const { getWeather } = this.props;
-        const { country, zipCode } = this.state;
+        const { zipCode } = this.state;
         return (
             <form className="submit-form" onSubmit={getWeather}>
                 <div>
-                    <span>Country: </span>
+                    <label>Country: </label>
                     <input type="text" 
                            name="country" 
                            placeholder="Country Abbreviation" 
                            onChange={this.handleChange} />
                 </div>
                 <div>
-                <span> Zip code: </span>
+                <label> Zip code: </label>
                 <input type="text" 
                        name="zipCode" 
                        placeholder="Zip code" 
                        onChange={this.handleChange} />
                 </div>
-                <button className="get-weather-button" disabled={ !country || !zipCode }>Get Weather</button>
+                <button className="get-weather-button" disabled={ !zipCode }>Get Weather</button>
             </form>
         )
     }
