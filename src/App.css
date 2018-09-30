@@ -175,7 +175,11 @@
 }
 
 .weather-card-active:hover {
-  cursor: helper;
+  transform: none;
+}
+
+.weather-card-active:hover {
+  cursor: default;
 }
 
 .weather-card:hover {

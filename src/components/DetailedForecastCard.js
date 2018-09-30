@@ -49,7 +49,6 @@ class DetailedForecastCard extends React.Component {
         const { city, changeForecastDisplay, currentForecastDisplay, forecastDisplay } = this.props;
         if (forecastDisplay) {
             const dayObj = currentForecastDisplay !== [] ? getDateFromString(currentForecastDisplay[0].dt_txt) : null;
-            console.log(dayObj);
             return  (
                 <div className="detailed-forecast-card" onClick={changeForecastDisplay}>
                     <div className="detailed-forecast-card-info">
