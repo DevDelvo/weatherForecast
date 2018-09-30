@@ -70,7 +70,7 @@ class App extends Component {
       today,
       days,
       todayForecast: true,
-      inputMessage: 'Enter your location',
+      inputMessage: 'Enter your location. Default is US.',
       forecastDisplay: false,
       });
     } else {
@@ -134,6 +134,7 @@ class App extends Component {
                                                 displayFahrenheit={displayFahrenheit} 
                                                 getCelsius={this.getCelsius}
                                                 data={day} 
+                                                currentForecastDisplay={currentForecastDisplay}
                                                 changeForecastDisplay={() => this.changeForecastDisplay(day)} />)
           }
           </div>

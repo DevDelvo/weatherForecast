@@ -53,12 +53,27 @@
 }
 
 .submit-form>div {
-  padding-top: 10px;
   padding-left: 10px;
 }
 
 .get-weather-button {
-  margin-left: 3px;
+  margin: 3px;
+  border-radius: 10px;
+  font-size: .5em;
+  align-self: center;
+  color: white;
+  background: rgb(13, 179, 221);
+}
+
+.get-weather-button:hover {
+  cursor: pointer;
+}
+
+.get-weather-button:disabled {
+  background: grey;
+  border: none;
+  cursor: default;
+  opacity: .5;
 }
 
 .weather-wrapper {
@@ -132,8 +147,6 @@
 
 /* WEATHER CARD */
 .weather-card-container {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
   margin-top: 5px;
 }
 
@@ -155,6 +168,14 @@
   border-radius: 10px;
 
   transition: .5s ease;
+}
+
+.weather-card-active {
+  opacity: .5;
+}
+
+.weather-card-active:hover {
+  cursor: helper;
 }
 
 .weather-card:hover {

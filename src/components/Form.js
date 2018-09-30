@@ -32,6 +32,7 @@ class Form extends React.Component {
                        name="zipCode" 
                        placeholder="Zip code" 
                        onChange={this.handleChange} />
+                       
                 </div>
                 <button className="get-weather-button" disabled={ !zipCode }>Get Weather</button>
             </form>

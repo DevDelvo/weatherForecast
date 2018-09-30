@@ -2,7 +2,7 @@ import React from 'react';
 import { getDateFromString } from '../dateData'
 
 const WeatherCard = (props) => {
-    const { data, displayFahrenheit, changeForecastDisplay, getCelsius } = props;
+    const { data, displayFahrenheit, changeForecastDisplay, getCelsius, currentForecastDisplay } = props;
     const dateObj = getDateFromString(data[4].dt_txt);
     let temp = data[0].main.temp;
     let maxTemp = Math.floor(data[4].main.temp_max);
@@ -16,11 +16,19 @@ const WeatherCard = (props) => {
     const weather = data[4].weather[0];
     const weatherDescription = data[4].weather[0].description;
     const weatherIcon = `http://openweathermap.org/img/w/${weather.icon}.png`
+    let weatherCardStyle = "weather-card ";
+
+    if (currentForecastDisplay !== data) {
+        weatherCardStyle = "weather-card ";
+    }
+    if (currentForecastDisplay === data) {
+        weatherCardStyle += "weather-card-active";
+    }
     // console.log(dateObj);
     // console.log(data);
     // console.log(weather);
     return (
-        <div className="weather-card" onClick={changeForecastDisplay}>
+        <div className={weatherCardStyle} onClick={changeForecastDisplay}>
             <div className="weather-card-day">{dateObj.day}</div>
             <div>{dateObj.hours}:{dateObj.minutes}</div>
             <div><img src={weatherIcon} alt={weatherDescription} /></div>
