@@ -55,6 +55,7 @@ class App extends Component {
     const paramString = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
     const response = await fetch(apiLink + paramString);
     const weatherData = await response.json();
+    console.log(apiLink + paramString)
     return weatherData;
   }
 
@@ -66,7 +67,7 @@ class App extends Component {
     const todayWeatherData = await this.makeAPIRequest('weather', country, zipCode);
     const weatherForecastData = await this.makeAPIRequest('forecast', country, zipCode);
 
-    if (parseInt(todayWeatherData.cod) === 200) {
+    if (parseInt(todayWeatherData.cod, 10) === 200) {
       const today = todayWeatherData;
       const days = getDays(weatherForecastData.list);
       this.setState({
