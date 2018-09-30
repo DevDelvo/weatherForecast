@@ -4,9 +4,15 @@ import { getDateFromString, getCelsius } from '../dateData'
 const WeatherCard = (props) => {
     const { data, displayFahrenheit, changeForecastDisplay } = props;
     const dateObj = getDateFromString(data[4].dt_txt);
-    const temp = data[0].main.temp;
-    const maxTemp = Math.floor(data[4].main.temp_max);
-    const minTemp = Math.floor(data[4].main.temp_min);
+    let temp = data[0].main.temp;
+    let maxTemp = Math.floor(data[4].main.temp_max);
+    let minTemp = Math.floor(data[4].main.temp_min);
+    if (!displayFahrenheit) {
+        temp = getCelsius(temp);
+        maxTemp = getCelsius(maxTemp);
+        minTemp = getCelsius(minTemp);
+    }
+
     const weather = data[4].weather[0];
     const weatherDescription = data[4].weather[0].description;
     const weatherIcon = `http://openweathermap.org/img/w/${weather.icon}.png`

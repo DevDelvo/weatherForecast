@@ -10,6 +10,19 @@ class DetailedForecastCard extends React.Component {
         
         return currentForecastDisplay.map(forecast => {
             const dayObj = getDateFromString(forecast.dt_txt);
+            const { toggleFahrenheit, displayFahrenheit } = this.props;
+            let temp = forecast.main.temp;
+            let temp_max = forecast.main.temp_max;
+            let temp_min = forecast.main.temp_min;
+            let fahrenheitStyle = "temperature-toggle-button active";
+            let celsiusStyle = "temperature-toggle-button ";
+            if (!displayFahrenheit) {
+                fahrenheitStyle = "temperature-toggle-button";
+                celsiusStyle = "temperature-toggle-button active";
+                temp = getCelsius(temp);
+                temp_max = getCelsius(temp_max);
+                temp_min = getCelsius(temp_min);
+            }
             return <div className="forecast-display-card" key={forecast.dt_txt}>
                     <span>
                         <span>
@@ -17,10 +30,10 @@ class DetailedForecastCard extends React.Component {
                             <img className="current-forecast-icon" src={`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`} alt={forecast.weather[0].description} />
                             <div className="current-forecast-temperature-container">
                                 <article className="forecast-temperature">{forecast.main.temp}</article>
-                                <div className="temperature-toggle"><span>°F</span> | <span>°C</span></div>
+                                <div className="temperature-toggle"><span className={fahrenheitStyle} onClick={toggleFahrenheit}>°F</span> | <span className={celsiusStyle} onClick={toggleFahrenheit}>°C</span></div>
                             </div>
                         </span>
-                        <article className="weather-high-low">{Math.floor(forecast.main.temp_max)}° / {Math.floor(forecast.main.temp_min)}°</article>
+                        <article className="weather-high-low">{Math.floor(temp_max)}° / {Math.floor(temp_min)}°</article>
                         <span>{forecast.weather[0].description}</span>
                     </span>
                     <span className="forecast-humidity-wind">
