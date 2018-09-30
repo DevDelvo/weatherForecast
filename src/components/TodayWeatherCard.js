@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getDateFromString } from '../dateData';
 
 const TodayWeatherCard = (props) => {
@@ -12,7 +13,13 @@ const TodayWeatherCard = (props) => {
         const weatherDesc = weather.description;
         const wind = data.wind;
         let { temp, temp_min, temp_max } = data.main;
- 
+
+        if (!displayFahrenheit) {
+            temp = getCelsius(temp);
+            temp_min = getCelsius(temp_min);
+            temp_max = getCelsius(temp_max);
+        }
+
         return (
             <article className="today-weather-card">
                 <div className="today-weather-info">
@@ -39,6 +46,14 @@ const TodayWeatherCard = (props) => {
     } else {
         return null;
     }
+}
+
+TodayWeatherCard.propTypes = {
+    data : PropTypes.object.isRequired, 
+    todayForecast: PropTypes.bool.isRequired, 
+    displayFahrenheit: PropTypes.bool.isRequired, 
+    toggleFahrenheit: PropTypes.func.isRequired,
+    getCelsius: PropTypes.func.isRequired,
 }
 
 export default TodayWeatherCard;

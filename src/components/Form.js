@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Form extends React.Component {
     state = {
@@ -38,6 +39,10 @@ class Form extends React.Component {
             </form>
         )
     }
+}
+
+Form.propTypes = {
+    getWeather: PropTypes.func.isRequired,
 }
 
 export default Form;

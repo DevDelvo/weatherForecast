@@ -1,9 +1,10 @@
 import React from 'react';
-import { getDateFromString } from '../dateData'
+import PropTypes from 'prop-types';
+import { getDateFromString } from '../dateData';
 
 class DetailedForecastCard extends React.Component {
     state ={
-        displayFahrenheit: true,
+        displayFahrenheit: true
     }
 
     displayedForecast = (currentForecastDisplay) => {
@@ -14,6 +15,11 @@ class DetailedForecastCard extends React.Component {
             let temp = forecast.main.temp;
             let temp_max = forecast.main.temp_max;
             let temp_min = forecast.main.temp_min;
+            if (!displayFahrenheit) {
+                temp = getCelsius(temp);
+                temp_max = getCelsius(temp_max);
+                temp_min = getCelsius(temp_min);
+            }
 
             return <article className="forecast-display-card" key={forecast.dt_txt}>
                     <span>
@@ -60,6 +66,15 @@ class DetailedForecastCard extends React.Component {
             return null;
         }
     }
+}
+
+DetailedForecastCard.propTypes = {
+    toggleFahrenheit: PropTypes.func.isRequired, 
+    displayFahrenheit: PropTypes.bool.isRequired,
+    getCelsius: PropTypes.func.isRequired,
+    city: PropTypes.string,
+    currentForecastDisplay: PropTypes.arrayOf(PropTypes.object).isRequired,
+    forecastDisplay: PropTypes.bool.isRequired
 }
 
 export default DetailedForecastCard;
