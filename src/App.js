@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './sunny.svg';
 import './App.css';
 
 import { config } from './config';
@@ -55,7 +55,6 @@ class App extends Component {
     const paramString = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
     const response = await fetch(apiLink + paramString);
     const weatherData = await response.json();
-    console.log(apiLink + paramString)
     return weatherData;
   }
 

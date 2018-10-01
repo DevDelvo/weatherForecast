@@ -33,7 +33,7 @@ class DetailedForecastCard extends React.Component {
                                 </div>
                             </div>
                         </span>
-                        <article className="weather-high-low">{Math.floor(temp_max)}° / {Math.floor(temp_min)}°</article>
+                        <article className="weather-high-low">{Math.round(temp_max)}° / {Math.round(temp_min)}°</article>
                         <span>{forecast.weather[0].description}</span>
                     </span>
                     <span className="forecast-humidity-wind">

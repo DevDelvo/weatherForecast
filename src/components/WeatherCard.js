@@ -10,8 +10,8 @@ const WeatherCard = (props) => {
     const weatherDescription = data[4].weather[0].description;
     const weatherIcon = `http://openweathermap.org/img/w/${weather.icon}.png`
     let temp = data[0].main.temp;
-    let maxTemp = Math.floor(data[4].main.temp_max);
-    let minTemp = Math.floor(data[4].main.temp_min);
+    let maxTemp = Math.round(data[4].main.temp_max);
+    let minTemp = Math.round(data[4].main.temp_min);
     if (!displayFahrenheit) {
             temp = getCelsius(temp);
             maxTemp = getCelsius(maxTemp);
