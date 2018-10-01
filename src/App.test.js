@@ -5,7 +5,6 @@ import nock from 'nock';
 import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import toJson from 'enzyme-to-json';
-import { debug } from 'util';
 
 Enzyme.configure({ adapter: new Adapter() });
 
