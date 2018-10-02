@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/DetailedForecastCard.css';
 import { getDateFromString } from '../dateData';
 
 class DetailedForecastCard extends React.Component {

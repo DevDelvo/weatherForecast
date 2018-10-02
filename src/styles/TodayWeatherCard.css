@@ -1,0 +1,68 @@
+.today-weather-card-container {
+    margin: auto;
+    max-width: 550px;
+  }
+  
+  .today-weather-card {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  
+    background-color: rgb(63, 142, 216, 0.3);
+    border-radius: 5px;
+  }
+  
+  .today-weather-card>div {
+    padding: 10px;
+  }
+  
+  .today-weather-info>p {
+    margin: 5px;
+  }
+  
+  .city {
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+  
+  .date {
+    font-weight: bold;
+  }
+  
+  .today-weather-temperature-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .today-temperature {
+    font-weight: bold;
+    font-size: 2em;
+  }
+  
+  .temperature-toggle {
+    font-size: .6em;
+    font-weight: bolder;
+  }
+  
+  .temperature-toggle-button:hover {
+    cursor: pointer;
+  }
+  
+  .active {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .weather-high-low {
+    font-size: .8em;
+  }
+  
+  .today-weather-description {
+    font-style: italic;
+    font-size: 1.3em;
+  }
+  
+  .today-weather-togglebox {
+    align-self: center;
+  }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/WeatherCard.css';
 
 import { getDateFromString } from '../dateData'
 

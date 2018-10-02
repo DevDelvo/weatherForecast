@@ -1,0 +1,35 @@
+.detailed-forecast-card {
+    margin: auto;
+    max-width: 700px;
+  }
+  
+  .detailed-forecast-card-info {
+    padding: 10px;
+    background-color: rgb(63, 142, 216, 0.3);
+    border-radius: 5px;
+  }
+
+  .forecasts-display-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+  }
+  
+  .forecast-display-card {
+    margin: 10px;
+  }
+  
+  .forecast-time {
+    font-weight: bold;
+  }
+  
+  .current-forecast-temperature-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .forecast-temperature {
+    font-weight: bold;
+    font-size: 1.3em;
+  }
