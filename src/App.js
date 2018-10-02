@@ -44,7 +44,7 @@ class App extends Component {
 
   makeAPIRequest = async (forecast, country, zip, units) => {
     country = country || 'US';
-    const apiLink = `http://api.openweathermap.org/data/2.5/${forecast}?`
+    const apiLink = `https://api.openweathermap.org/data/2.5/${forecast}?`
     const params = {
       zip: zip + ',' + country,
       units: 'imperial',
