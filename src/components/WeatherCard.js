@@ -10,14 +10,16 @@ const WeatherCard = (props) => {
     const weather = data[4].weather[0];
     const weatherDescription = data[4].weather[0].description;
     const weatherIcon = `http://openweathermap.org/img/w/${weather.icon}.png`
-    let temp = data[0].main.temp;
+    let temp = data[4].main.temp;
     let maxTemp = Math.round(data[4].main.temp_max);
     let minTemp = Math.round(data[4].main.temp_min);
+
     if (!displayFahrenheit) {
-            temp = getCelsius(temp);
-            maxTemp = getCelsius(maxTemp);
-            minTemp = getCelsius(minTemp);
-        }
+        temp = getCelsius(temp);
+        maxTemp = getCelsius(maxTemp);
+        minTemp = getCelsius(minTemp);
+    }
+
     return (
         <article className={`weather-card ${currentForecastDisplay === data ? 'weather-card-active' : ''}`} onClick={changeForecastDisplay}>
             <div className="weather-card-day">{dateObj.day}</div>

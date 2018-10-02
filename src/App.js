@@ -6,6 +6,7 @@ import TodayWeatherCard from './components/TodayWeatherCard';
 import WeatherCard from './components/WeatherCard';
 import DetailedForecastCard from './components/DetailedForecastCard';
 import Form from './components/Form';
+
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -49,7 +50,6 @@ class App extends Component {
       zip: zip + ',' + country,
       units: 'imperial',
       appid: process.env.REACT_APP_WEATHER_API_KEY,
-      
     }
     const paramString = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
     const response = await fetch(apiLink + paramString);
@@ -94,9 +94,9 @@ class App extends Component {
 
   changeForecastDisplay = (data) => {
     this.setState({
-      ...this.state, 
-      todayForecast: false, 
-      forecastDisplay: true, 
+      ...this.state,
+      todayForecast: false,
+      forecastDisplay: true,
       currentForecastDisplay: data
     })
   }
@@ -116,33 +116,33 @@ class App extends Component {
             <Form getWeather={this.getWeather} />
           </div>
           <div className="today-weather-card-container">
-            <TodayWeatherCard todayForecast={todayForecast} 
+            <TodayWeatherCard todayForecast={todayForecast}
                               toggleFahrenheit={this.toggleFahrenheit}
-                              displayFahrenheit={displayFahrenheit} 
+                              displayFahrenheit={displayFahrenheit}
                               getCelsius={this.getCelsius}
                               data={today} />
           </div>
           <div className="detailed-forest-card-container">
-            <DetailedForecastCard toggleFahrenheit={this.toggleFahrenheit} 
+            <DetailedForecastCard toggleFahrenheit={this.toggleFahrenheit}
                                   city={city}
-                                  displayFahrenheit={displayFahrenheit} 
+                                  displayFahrenheit={displayFahrenheit}
                                   getCelsius={this.getCelsius}
-                                  currentForecastDisplay={currentForecastDisplay} 
+                                  currentForecastDisplay={currentForecastDisplay}
                                   forecastDisplay={forecastDisplay} />
           </div>
           <div className="weather-card-container">
           {
-            days.map((day) => <WeatherCard key={day[0].dt_txt} 
-                                                displayFahrenheit={displayFahrenheit} 
+            days.map((day) => <WeatherCard key={day[0].dt_txt}
+                                                displayFahrenheit={displayFahrenheit}
                                                 getCelsius={this.getCelsius}
-                                                data={day} 
+                                                data={day}
                                                 currentForecastDisplay={currentForecastDisplay}
                                                 changeForecastDisplay={() => this.changeForecastDisplay(day)} />)
           }
           </div>
         </div>
       </div>
-    ) 
+    )
   }
 }
 

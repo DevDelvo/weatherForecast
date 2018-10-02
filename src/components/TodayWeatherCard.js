@@ -52,9 +52,9 @@ const TodayWeatherCard = (props) => {
 }
 
 TodayWeatherCard.propTypes = {
-    data : PropTypes.object.isRequired, 
-    todayForecast: PropTypes.bool.isRequired, 
-    displayFahrenheit: PropTypes.bool.isRequired, 
+    data : PropTypes.object.isRequired,
+    todayForecast: PropTypes.bool.isRequired,
+    displayFahrenheit: PropTypes.bool.isRequired,
     toggleFahrenheit: PropTypes.func.isRequired,
     getCelsius: PropTypes.func.isRequired,
 }
