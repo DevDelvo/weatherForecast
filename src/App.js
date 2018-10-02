@@ -8,7 +8,7 @@ import WeatherCard from './components/WeatherCard';
 import DetailedForecastCard from './components/DetailedForecastCard';
 import Form from './components/Form';
 
-const API_KEY = config.apiKey;
+const API_KEY = process.env.OWM_KEY || config.apiKey;
 
 const getDays = (weatherDataList) => {
   const days = [];

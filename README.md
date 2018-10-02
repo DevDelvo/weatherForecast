@@ -8,12 +8,19 @@ By [Kevin Delvo] for Buildit @ wipro digital
 
 1. Navigate to [repo](https://gitbub.com/DevDelvo/weatherForecast)
 2. Clone locally with the command `git clone https://github.com/DevDelvo/weatherForecast.git`
+
 3. Install dependencies with the command `npm install`
-4. Run tests with the command `npm run test`
-5. Start your server using `npm run start`
-6. Navigate to the app in [browser](http://localhost:3000)
-7. In the app, find the input forms for Country and Zip Code and type in the abbreviation of the country and zipcode you would like to see the weather for. Press the `Get Weather` button.
-8. Check out the weather for the current day and the next 5 days. The next day boxes can be clicked and when they are, they display the weather forecast for every 3 hours.
+4. Register a free OpenWeatherMap account and obtain an API key under the free subscription plan [here](https://openweathermap.org/api)
+5. Inside of the src folder of this project, create a config.js file  and enter the following: 
+    export const config = {
+        apiKey: 'Your OpenWeatherAPI key here'
+    }
+6. Run tests with the command `npm run test`
+7. Start your server using `npm run start`
+8. Navigate to the app in [browser](http://localhost:3000)
+9. In the app, find the input forms for Country and Zip Code and type in the abbreviation of the country and zipcode you would like to see the weather for. 
+10. Press the `Get Weather` button.
+11. Check out the weather for the current day and the next 5 days. The next day boxes can be clicked and when they are, they display the weather forecast for every 3 hours of that day. You can also toggle the temperature display between appearing as fahrenheit and celsius by clicking the F and C letters. 
 
 ## Technologies
 HTML, CSS, React
