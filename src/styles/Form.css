@@ -4,6 +4,7 @@
 
 .form-container {
   display: flex;
+  justify-content: center;
 }
 
 .input-message {
