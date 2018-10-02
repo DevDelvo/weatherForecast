@@ -1,8 +1,7 @@
 # Weather Forecast App
 
 This app can be found deployed on [heroku](https://devdelvo-weather-app.herokuapp.com/)
-By [Kevin Delvo] for Buildit @ wipro digital
-[kevindelvo.com]
+By [Kevin Delvo](https://www.kevindelvo.com) for Buildit @ wipro digital
 
 ## Instructions
 
@@ -31,27 +30,19 @@ By [Kevin Delvo] for Buildit @ wipro digital
 ## Technologies
 HTML,
 CSS for styling,
-React for modularizing and reusing components
+React for modularizing and reusing components,
+dotenv for storing the OpenWeatherMap api key as an environmental variable for private key security. 
 
 This app was started with [create-react-app](https://github.com/facebook/create-react-app)
 
 ## Thought Processes
 
-At the start of the project, I knew I wanted to use just HTML, CSS and React to keep the app very simple. Because of the simplicity of the app, I didn't think webpack or libaries like Material-UI would be necessary. I would also rely on flexbox to make the app more responsive.
+-At the start of the project, I knew I wanted to use just HTML, CSS and React to keep the app very simple. Because of the simplicity of the app, I didn't think a custom webpack build or libaries like Material-UI would be necessary. I chose create-react-app to get a quick start on the project and save a lot of time on set-up. I would also rely on flexbox to make the app more responsive.
 
 -For making the api requests, due to the limitation of the free OpenWeatherMap api, I opted to only use country code and zip code. I'm aware that using the OpenWeatherMap city IDs provide the most accurate information but it would be difficult to provide that for the user since its just numbers. With more time, I would have liked to experiment with caching key-value pairs from the city.list.json that OpenWeatherMap provides into a new object holding city abbreviation - city ID pairs. Although taking up more memory, the key value pair would provide an O(1) lookup time when the user provides their city which would access the city ID from the cached object.
 
--For the Form component, I made it so the weather button was disabled unless they entered a zip code which is what is essential for making the API request. I also handled a failed API request by having an error message display telling the user to input a proper zip code and country code or to try again later in case the OpenWeatherMap itself was having issues. With more time I would have loved to include proper form validation to tell the user if they are entering a valid country code or zip code. I would either add autocomplete with a trie of all the valid country codes or a dropdown modal.
+-For the Form component, I made it so the weather button was disabled unless they entered a zip code which is what is essential for making the API request. I also handled a failed API request by having an error message display telling the user to input a proper zip code and country code or to try again later in case the OpenWeatherMap itself was having issues. With more time I would have loved to include proper form validation to tell the user if they are entering a valid country code or zip code. I would either add autocomplete suggestions with a trie of all the valid country codes or a dropdown modal.
 
--For the interface, I took inspiration from many other existing weather apps. I wanted the information to be displayed with a detailed view for the day, followed by a brief description of the upcoming week through the WeatherCard component. So I opted to include information like the Date, the time, description of the weather, the humidity and wind speed. But for the smaller WeatherCard component, I kept it simple with just the Day, weather icon, description, temperature and highs/lows. For styling, I would put emphasis on the more important information relevent to the user at a glance such as the Date, the time and the temperature. I also wanted to make it so the user could toggle between fahrenheit and celsisus to have the options available for the user depending on their preferences. Given more time I would have loved to incorporate a carousel for the hourly forecasts in the DetailedForecastCard component so that the view is more consistent when the viewer wants to see that information. I would also have liked to experiment more with the interface such as font styling, font colors, etc. to make the app more aesthetically pleasing.
+-For the interface, I took inspiration from many other existing weather apps. I wanted the information to be displayed with a detailed view for the day, followed by a brief description of the upcoming week through the WeatherCard component. So I opted to include information like the Date, the time, description of the weather, the humidity and wind speed. But for the smaller WeatherCard component, I kept it simple with just the day, weather icon, description, temperature and highs/lows. For styling, I put emphasis through font-size and font-weight on the more important information relevent to the user at a glance such as the Date, the time and the temperature. I also wanted to make it so the user could toggle between fahrenheit and celsisus to have the options available for the user depending on their preferences. Given more time I would have loved to incorporate a carousel for the hourly forecasts in the DetailedForecastCard component so that the view is more consistent when the viewer wants to see that information. I would have also liked to experiment more with the interface such as font styling, font colors, etc. to make the app more aesthetically pleasing.
 
 -For testing I would have liked to incorporate a functional test for when the user inputs correct and wrong information and then clicks the Get Weather button. But I was only able to test if the app renders correctly by matching it with a snap shot.
-
-
-## Requirements
-#### A readme.md as described above
-#### A working forecast app as per requirements
-#### A project that builds and runs as per instruction without warnings or errors
-
-## Bonuses
-#### Feel free to add any automated tests (e.g. unit, functional, integration, system)
