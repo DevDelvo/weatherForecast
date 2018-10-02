@@ -1,5 +1,9 @@
-.form-container {
+.form-message-container {
   padding: 10px;
+}
+
+.form-container {
+  display: flex;
 }
 
 .input-message {
@@ -34,6 +38,15 @@
   border: none;
   cursor: default;
   opacity: .5;
+}
+
+.clear-weather-button {
+  margin: 1px;
+  border-radius: 10px;
+  font-size: .5em;
+  align-self: center;
+  color: white;
+  background: red;
 }
 
 .weather-wrapper {

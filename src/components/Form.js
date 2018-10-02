@@ -9,7 +9,7 @@ class Form extends React.Component {
         formErrors: { country: '', zipCode: 0},
         formValid: false,
     }
-   
+
     handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -17,32 +17,34 @@ class Form extends React.Component {
     }
 
     render() {
-        const { getWeather } = this.props;
+        const { getWeather, clearDisplay } = this.props;
         const { zipCode } = this.state;
         return (
+            <div className="form-container">
             <form className="submit-form" onSubmit={getWeather}>
                 <div>
                     <label>Country: </label>
-                    <input 
-                        type="text" 
-                        name="country" 
-                        placeholder="Country Abbreviation" 
-                        onChange={this.handleChange} 
+                    <input
+                        type="text"
+                        name="country"
+                        placeholder="Country Abbreviation"
+                        onChange={this.handleChange}
                     />
                 </div>
                 <div>
                 <label> Zip code: </label>
-                <input 
+                <input
                     type="text"
                     className="zipcode-form"
-                    name="zipCode" 
-                    placeholder="Zip code" 
-                    onChange={this.handleChange} 
+                    name="zipCode"
+                    placeholder="Zip code"
+                    onChange={this.handleChange}
                 />
-                       
                 </div>
                 <button className="get-weather-button" disabled={ !zipCode }>Get Weather</button>
             </form>
+            <button className="clear-weather-button" onClick={clearDisplay}>Clear</button>
+            </div>
         )
     }
 }

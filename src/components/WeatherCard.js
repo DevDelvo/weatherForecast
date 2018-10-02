@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/WeatherCard.css';
-
 import { getDateFromString } from '../dateData'
 
 const WeatherCard = (props) => {
@@ -30,8 +29,6 @@ const WeatherCard = (props) => {
         </article>
     )
 }
-
-
 
 WeatherCard.propTypes = {
     displayFahrenheit: PropTypes.bool.isRequired,

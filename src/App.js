@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import logo from './sunny.svg';
 import './App.css';
-
 import TodayWeatherCard from './components/TodayWeatherCard';
 import WeatherCard from './components/WeatherCard';
 import DetailedForecastCard from './components/DetailedForecastCard';
 import Form from './components/Form';
-
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -77,15 +75,15 @@ class App extends Component {
       });
     } else {
       this.setState({
-        initialState, inputMessage: `Please enter proper country abbreviation and zip code. Or try again at another time.`
-      })
+        ...initialState, inputMessage: `Please enter proper country abbreviation and zip code. Or try again at another time.`
+      });
     }
   }
 
   toggleFahrenheit = () => {
     this.setState({
       ...this.state, displayFahrenheit: !this.state.displayFahrenheit
-    })
+    });
   }
 
   getCelsius = (temp) => {
@@ -98,7 +96,13 @@ class App extends Component {
       todayForecast: false,
       forecastDisplay: true,
       currentForecastDisplay: data
-    })
+    });
+  }
+
+  clearDisplay = () => {
+    this.setState({
+      ...initialState
+    });
   }
 
   render() {
@@ -111,24 +115,28 @@ class App extends Component {
           <h1 className="App-title">Weather App</h1>
         </header>
         <div className="weather-wrapper">
-          <div className="form-container">
+          <div className="form-message-container">
             <h3 className="input-message">{inputMessage}</h3>
-            <Form getWeather={this.getWeather} />
+            <Form getWeather={this.getWeather} clearDisplay={this.clearDisplay} />
           </div>
           <div className="today-weather-card-container">
-            <TodayWeatherCard todayForecast={todayForecast}
-                              toggleFahrenheit={this.toggleFahrenheit}
-                              displayFahrenheit={displayFahrenheit}
-                              getCelsius={this.getCelsius}
-                              data={today} />
+            <TodayWeatherCard
+              todayForecast={todayForecast}
+              toggleFahrenheit={this.toggleFahrenheit}
+              displayFahrenheit={displayFahrenheit}
+              getCelsius={this.getCelsius}
+              data={today}
+            />
           </div>
           <div className="detailed-forest-card-container">
-            <DetailedForecastCard toggleFahrenheit={this.toggleFahrenheit}
-                                  city={city}
-                                  displayFahrenheit={displayFahrenheit}
-                                  getCelsius={this.getCelsius}
-                                  currentForecastDisplay={currentForecastDisplay}
-                                  forecastDisplay={forecastDisplay} />
+            <DetailedForecastCard
+              toggleFahrenheit={this.toggleFahrenheit}
+              city={city}
+              displayFahrenheit={displayFahrenheit}
+              getCelsius={this.getCelsius}
+              currentForecastDisplay={currentForecastDisplay}
+              forecastDisplay={forecastDisplay}
+            />
           </div>
           <div className="weather-card-container">
           {
