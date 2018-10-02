@@ -20,7 +20,7 @@ By [Kevin Delvo](https://www.kevindelvo.com) for [Buildit @ wipro digital](https
 
 7. Start your server using `npm run start`
 
-8. Navigate to the app in [browser](http://localhost:3000)
+8. Navigate to the app in [browser](http://localhost:3000). This app is best viewed on the Google Chrome browser.
 
 9. In the app, find the input forms for Country and Zip Code and type in the abbreviation of the country and zipcode you would like to see the weather for.
 
@@ -32,7 +32,9 @@ By [Kevin Delvo](https://www.kevindelvo.com) for [Buildit @ wipro digital](https
 HTML,
 CSS for styling,
 React for modularizing and reusing components,
-dotenv for storing the OpenWeatherMap api key as an environmental variable for private key security. 
+prop-types to define what each prop component needs and what data type that prop should be,
+dotenv for storing the OpenWeatherMap api key as an environmental variable for private key security,
+enzyme for making tests for seeing if the app renders correctly
 
 This app was started with [create-react-app](https://github.com/facebook/create-react-app)
 
@@ -44,6 +46,10 @@ This app was started with [create-react-app](https://github.com/facebook/create-
 
 -For the Form component, I made it so the weather button was disabled unless they entered a zip code which is what is essential for making the API request. I also handled a failed API request by having an error message display telling the user to input a proper zip code and country code or to try again later in case the OpenWeatherMap itself was having issues. With more time I would have loved to include proper form validation to tell the user if they are entering a valid country code or zip code. I would either add autocomplete suggestions with a trie of all the valid country codes or a dropdown modal.
 
--For the interface, I took inspiration from many other existing weather apps. I wanted the information to be displayed with a detailed view for the day, followed by a brief description of the upcoming week through the WeatherCard component. So I opted to include information like the Date, the time, description of the weather, the humidity and wind speed. But for the smaller WeatherCard component, I kept it simple with just the day, weather icon, description, temperature and highs/lows. For styling, I put emphasis through font-size and font-weight on the more important information relevent to the user at a glance such as the Date, the time and the temperature. I also wanted to make it so the user could toggle between fahrenheit and celsisus to have the options available for the user depending on their preferences. Given more time I would have loved to incorporate a carousel for the hourly forecasts in the DetailedForecastCard component so that the view is more consistent when the viewer wants to see that information. I would have also liked to experiment more with the interface such as font styling, font colors, etc. to make the app more aesthetically pleasing.
+-For the interface, I took inspiration from many other existing weather apps. I wanted the information to be displayed with a detailed view for the day, followed by a brief description of the upcoming week through the WeatherCard component. So I opted to include information like the Date, the time, description of the weather, the humidity and wind speed. But for the smaller WeatherCard component, I kept it simple with just the day, weather icon, description, temperature and highs/lows. I wanted to make it obvious that you could click on the smalle WeatherCard components so I added animation and a mouse over effect to each one. These effects would be disabled and the card would be transparent if that day's information was selected to be displayed in the DetailedForeCastCard component.
+
+-For styling, I put emphasis through font-size and font-weight on the more important information relevent to the user at a glance such as the Date, the time and the temperature. I also wanted to make it so the user could toggle between fahrenheit and celsisus to have the options available for the user depending on their preferences. Given more time I would have loved to incorporate a carousel for the hourly forecasts in the DetailedForecastCard component so that the view is more consistent when the viewer wants to see that information. I would have also liked to experiment more with the interface such as font styling, font colors, etc. to make the app more aesthetically pleasing.
 
 -For testing I would have liked to incorporate a functional test for when the user inputs correct and wrong information and then clicks the Get Weather button. But I was only able to test if the app renders correctly by matching it with a snap shot.
+
+-The service worker than comes with create-react-app was also left in for if I were to make this app a progressive web app for mobile use.

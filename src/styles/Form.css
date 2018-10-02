@@ -1,42 +1,42 @@
 .form-container {
-    padding: 10px;
-  }
-  
-  .input-message {
-    justify-content: center;
-  }
-  
-  .submit-form {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .submit-form>div {
-    padding-left: 10px;
-  }
-  
-  .get-weather-button {
-    margin: 3px;
-    border-radius: 10px;
-    font-size: .5em;
-    align-self: center;
-    color: white;
-    background: rgb(13, 179, 221);
-  }
-  
-  .get-weather-button:hover {
-    cursor: pointer;
-  }
-  
-  .get-weather-button:disabled {
-    background: grey;
-    border: none;
-    cursor: default;
-    opacity: .5;
-  }
-  
-  .weather-wrapper {
-    margin-left: 50px;
-    margin-right: 50px;
-  }
+  padding: 10px;
+}
+
+.input-message {
+  justify-content: center;
+}
+
+.submit-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.submit-form>div {
+  padding-left: 10px;
+}
+
+.get-weather-button {
+  margin: 3px;
+  border-radius: 10px;
+  font-size: .5em;
+  align-self: center;
+  color: white;
+  background: rgb(13, 179, 221);
+}
+
+.get-weather-button:hover {
+  cursor: pointer;
+}
+
+.get-weather-button:disabled {
+  background: grey;
+  border: none;
+  cursor: default;
+  opacity: .5;
+}
+
+.weather-wrapper {
+  margin-left: 50px;
+  margin-right: 50px;
+}
