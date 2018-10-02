@@ -1,7 +1,7 @@
 # Weather Forecast App
 
+This app can be found deployed on [heroku](https://devdelvo-weather-app.herokuapp.com/)
 By [Kevin Delvo] for Buildit @ wipro digital
-
 [kevindelvo.com]
 
 ## Instructions
@@ -34,6 +34,10 @@ CSS for styling,
 React for modularizing and reusing components
 
 This app was started with [create-react-app](https://github.com/facebook/create-react-app)
+
+## Thought Processes
+
+    At the start of the project, I knew I wanted to use just HTML, CSS and React to keep the app very simple. I'm familiar with 
 
 ## Requirements
 #### A readme.md as described above

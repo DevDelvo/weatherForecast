@@ -9,7 +9,6 @@ class DetailedForecastCard extends React.Component {
     }
 
     displayedForecast = (currentForecastDisplay) => {
-        
         return currentForecastDisplay.map(forecast => {
             const dayObj = getDateFromString(forecast.dt_txt);
             const { toggleFahrenheit, displayFahrenheit, getCelsius } = this.props;
@@ -22,11 +21,12 @@ class DetailedForecastCard extends React.Component {
                 temp_min = getCelsius(temp_min);
             }
 
-            return <article className="forecast-display-card" key={forecast.dt_txt}>
+            return (
+                <article className="forecast-display-card" key={forecast.dt_txt}>
                     <span>
                         <span>
                             <article className="forecast-time">{dayObj.hours}:{dayObj.minutes}</article>
-                            <img className="current-forecast-icon" src={`http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`} alt={forecast.weather[0].description} />
+                            <img className="current-forecast-icon" src={`https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`} alt={forecast.weather[0].description} />
                             <div className="current-forecast-temperature-container">
                                 <article className="forecast-temperature">{temp}</article>
                                 <div className="temperature-toggle">
@@ -41,9 +41,9 @@ class DetailedForecastCard extends React.Component {
                         <article>Hum: {forecast.main.humidity}%</article>
                         <article>Wind: {forecast.wind.speed}mph</article>
                     </span>
-                   </article>
+                </article>
+            )
         })
-        
     }
 
     render() {

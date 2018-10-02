@@ -12,7 +12,7 @@ const TodayWeatherCard = (props) => {
         const city = data.name;
         const { humidity,  } = data.main;
         const weather = data.weather[0];
-        const weatherIcon = `http://openweathermap.org/img/w/${weather.icon}.png`;
+        const weatherIcon = `https://openweathermap.org/img/w/${weather.icon}.png`;
         const weatherDesc = weather.description;
         const wind = data.wind;
         let { temp, temp_min, temp_max } = data.main;

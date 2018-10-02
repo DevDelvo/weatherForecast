@@ -9,7 +9,7 @@ const WeatherCard = (props) => {
     const dateObj = getDateFromString(data[4].dt_txt);
     const weather = data[4].weather[0];
     const weatherDescription = data[4].weather[0].description;
-    const weatherIcon = `http://openweathermap.org/img/w/${weather.icon}.png`
+    const weatherIcon = `https://openweathermap.org/img/w/${weather.icon}.png`
     let temp = data[4].main.temp;
     let maxTemp = Math.round(data[4].main.temp_max);
     let minTemp = Math.round(data[4].main.temp_min);
