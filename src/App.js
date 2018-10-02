@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import logo from './sunny.svg';
 import './App.css';
 
-import { config } from './config';
 import TodayWeatherCard from './components/TodayWeatherCard';
 import WeatherCard from './components/WeatherCard';
 import DetailedForecastCard from './components/DetailedForecastCard';
 import Form from './components/Form';
-
-const API_KEY = process.env.OWM_KEY || config.apiKey;
+import dotenv from 'dotenv';
+dotenv.config();
 
 const getDays = (weatherDataList) => {
   const days = [];
@@ -49,7 +48,7 @@ class App extends Component {
     const params = {
       zip: zip + ',' + country,
       units: 'imperial',
-      appid: API_KEY,
+      appid: process.env.REACT_APP_WEATHER_API_KEY,
       
     }
     const paramString = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
