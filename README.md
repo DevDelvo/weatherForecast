@@ -1,6 +1,7 @@
 # Weather Forecast App
 
 This app can be found deployed on [heroku](https://devdelvo-weather-app.herokuapp.com/)
+
 By [Kevin Delvo](https://www.kevindelvo.com) for Buildit @ wipro digital
 
 ## Instructions
