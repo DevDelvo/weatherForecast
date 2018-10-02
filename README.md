@@ -24,7 +24,7 @@ By [Kevin Delvo](https://www.kevindelvo.com) for [Buildit @ wipro digital](https
 
 9. In the app, find the input forms for Country and Zip Code and type in the abbreviation of the country and zipcode you would like to see the weather for.
 
-10. Press the `Get Weather` button.
+10. Press the `Get Weather` button. Press the `Clear` button to clear all the weather data.
 
 11. Check out the weather for the current day and the next 5 days. The next day boxes can be clicked to display the weather forecast for every 3 hours of that day. You can also toggle the temperature display between appearing as fahrenheit and celsius by clicking the F and C letters.
 
